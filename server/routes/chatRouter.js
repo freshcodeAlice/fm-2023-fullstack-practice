@@ -5,8 +5,9 @@ const chatRouter = express.Router();
 
 chatRouter.post('/', ChatController.createChat);
 chatRouter.post('/:chatId', ChatController.addMessage);
-chatRouter.get('/:chatId', ChatController.getChatWithUsers);
+chatRouter.get('/:chatId/users', ChatController.getChatWithUsers);
 chatRouter.get('/:userId/all', ChatController.getAllUserChats);
+chatRouter.get('/:chatId', ChatController.getChatWithMessages);
 chatRouter.put('/:chatId/:userId', ChatController.addUserToChat);
 
 
