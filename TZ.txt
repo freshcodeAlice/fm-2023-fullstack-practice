@@ -1,0 +1,56 @@
+Messenger
+
+1. Реєстрація та авторизація юзера
+2. Юзери спілкуються в чаті.
+3. Відправка повідомлень юзера в чат 
+4. Читання повідомлень в чаті.
+
+
+User
+- firstName: string
+- lastName: string
+*- email: string, unique
+*- password: string
+- birthday: date
+
+Chat
+- name: string,
+- members: [ObjectId] -> User
+- messages: [ObjectId] -> Messages
+
+Message
+*- author: ObjectId,
+*- body: String
+- status: boolean,
+- chatId: ObjectId -> Chat
+
+
+
+Функціонал
+Юзер
+- створення (реєстрація)
+- логін
+- отримання даних юзера
+- видалення юзера
+
+Чат
+- створення чата
+- додавання юзера
+- отримання всіх учасників чату
+- додавання повідомлення
+
+(опціонально)
+- видалення юзера з чату
+- видалення чату
+
+
+
+/*
+Завдання 1:
+
+1. Зробити темплейт web-server (структура)
+2. Втілити моделі за ТЗ
+
+
+*/
+
