@@ -10,7 +10,7 @@ User
 - firstName: string
 - lastName: string
 *- email: string, unique
-*- password: string
+*- passwordHash: string
 - birthday: date
 
 Chat
