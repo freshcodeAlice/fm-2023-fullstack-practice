@@ -1,5 +1,6 @@
 import {Formik, Form, Field} from 'formik';
 import {signIn} from '../../api/index';
+import styles from '../../pages/Home/Home.module.css';
 
 function SignIn() {
 
@@ -18,7 +19,7 @@ function SignIn() {
             onSubmit={submitHandler}
         >
             {(formikProps) => (
-                <Form>
+                <Form className={styles['form']}>
                     <Field name="email" placeholder="Type your email" />
                     <Field name="password" placeholder="Type your pass" />
                     <button type="submit">Submit</button>

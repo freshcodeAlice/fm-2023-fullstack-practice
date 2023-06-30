@@ -1,6 +1,7 @@
 import {Formik, Form, Field} from 'formik';
 import {signUp} from '../../api/index';
 import {format} from 'date-fns';
+import styles from '../../pages/Home/Home.module.css';
 
 function SignUp() {
 
@@ -22,7 +23,7 @@ function SignUp() {
             onSubmit={submitHandler}
         >
             {(formikProps) => (
-                <Form>
+                <Form className={styles['form']}>
                     <Field name="firstName" placeholder="Type your firstName" />
                     <Field name="lastName" placeholder="Type your lastName" />
                     <Field name="email" placeholder="Type your email" />
