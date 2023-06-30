@@ -4,7 +4,7 @@ const chatRouter = require('./chatRouter');
 
 const apiRouter = express.Router();
 
-apiRouter.use('/users/', userRouter);
+apiRouter.use('/users', userRouter);
 apiRouter.use('/chats', chatRouter);
 
 
