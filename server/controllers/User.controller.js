@@ -1,4 +1,5 @@
 const {User} = require('../models');
+const NotFoundError = require('../errors/NotFoundError');
 const bcrypt = require('bcrypt');
 
 module.exports.signUp = async(req, res, next) => {
@@ -29,7 +30,7 @@ module.exports.signIn = async(req, res, next) => {
         });
         // 2.1 Або юзера з таким імейлом ми знайшли, або ні
         if(!foundUser) {
-            throw new Error('User not found');
+            throw new NotFoundError('User not found');
         }
         const result = await bcrypt.compare(password, foundUser.passwordHash);
         // або пароль правильний, або ні
