@@ -1,4 +1,5 @@
 import {Formik, Form, Field} from 'formik';
+import {signIn} from '../../api/index';
 
 function SignIn() {
 
@@ -7,7 +8,8 @@ function SignIn() {
         password: ''
     }
     const submitHandler = (values, actions) => {
-        console.log(values);
+        signIn(values)
+        .then(result => console.log(result));
     }
 
     return (
@@ -19,6 +21,7 @@ function SignIn() {
                 <Form>
                     <Field name="email" placeholder="Type your email" />
                     <Field name="password" placeholder="Type your pass" />
+                    <button type="submit">Submit</button>
                 </Form>
             )}
         </Formik>

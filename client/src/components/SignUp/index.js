@@ -25,7 +25,7 @@ function SignUp() {
                     <Field name="email" placeholder="Type your email" />
                     <Field name="password" placeholder="Type your pass" />
                     <Field name="birthday" placeholder="Type your email" type="date"/>
-
+                    <button type="submit">Submit</button>
                 </Form>
             )}
         </Formik>
