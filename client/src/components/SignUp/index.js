@@ -1,4 +1,6 @@
 import {Formik, Form, Field} from 'formik';
+import {signUp} from '../../api/index';
+import {format} from 'date-fns';
 
 function SignUp() {
 
@@ -7,10 +9,11 @@ function SignUp() {
         lastName: '',
         email: '',
         password: '',
-        birthday: new Date()
+        birthday: format(new Date(), 'yyyy-MM-dd')
     }
     const submitHandler = (values, actions) => {
-        console.log(values);
+        signUp()
+        .then(({data: {data}}) => console.log(data));
     }
 
     return (
