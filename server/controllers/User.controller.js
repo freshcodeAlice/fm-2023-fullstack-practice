@@ -1,5 +1,6 @@
 const {User} = require('../models');
 const NotFoundError = require('../errors/NotFoundError');
+const InvalidDataError = require('../errors/InvalidDataError');
 const {createToken, verifyToken} = require('../services/tokenService');
 const bcrypt = require('bcrypt');
 
@@ -38,7 +39,9 @@ module.exports.signIn = async(req, res, next) => {
         }
         const result = await bcrypt.compare(password, foundUser.passwordHash);
         // або пароль правильний, або ні
-
+        if (!result) {
+            throw new InvalidDataError('Invalid credentials');
+        }
         /// Створити сесію користувача (створити токени і відправити їх назад для підтвердження аутентифікації)
         const token = await createToken({email, userId: foundUser._id});
         res.status(200).send({token})
