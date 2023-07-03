@@ -1,5 +1,6 @@
 const {User} = require('../models');
 const NotFoundError = require('../errors/NotFoundError');
+const {createToken, verifyToken} = require('../services/tokenService');
 const bcrypt = require('bcrypt');
 
 module.exports.signUp = async(req, res, next) => {
@@ -62,3 +63,22 @@ module.exports.deleteOne = async(req, res, next) => {
         next(error)
     }
 } 
+
+
+
+module.exports.auth = async(req, res, next) => {
+    try {
+        const {body: {email}} = req;
+        const user = await User.findOne({
+            email
+        });
+         const token = await createToken({email, userId: user._id});
+         res.status(200).send({
+            token
+         })
+    } catch(error) {
+        next(error)
+    }
+}
+
+
