@@ -7,7 +7,10 @@ module.exports.signUp = async(req, res, next) => {
     try {
        const {body} = req;
         const createdUser = await User.create(body);
-        res.status(201).send({data: createdUser});
+        const token = await createToken({email, userId: createdUser._id});
+        res.status(201).send({
+            data: createdUser,
+            token: token});
     } catch(error) {
         next(error)
     }
@@ -35,9 +38,10 @@ module.exports.signIn = async(req, res, next) => {
         }
         const result = await bcrypt.compare(password, foundUser.passwordHash);
         // або пароль правильний, або ні
-        res.status(200).send({data: "Success"})
 
         /// Створити сесію користувача (створити токени і відправити їх назад для підтвердження аутентифікації)
+        const token = await createToken({email, userId: foundUser._id});
+        res.status(200).send({token})
 
     } catch(error) {
         next(error)
@@ -63,22 +67,5 @@ module.exports.deleteOne = async(req, res, next) => {
         next(error)
     }
 } 
-
-
-
-module.exports.auth = async(req, res, next) => {
-    try {
-        const {body: {email}} = req;
-        const user = await User.findOne({
-            email
-        });
-         const token = await createToken({email, userId: user._id});
-         res.status(200).send({
-            token
-         })
-    } catch(error) {
-        next(error)
-    }
-}
 
 

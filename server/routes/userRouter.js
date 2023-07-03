@@ -9,9 +9,6 @@ userRouter.post('/sign-in', UserController.signIn); //signIn
 userRouter.get('/', checkToken, UserController.getOne);
 userRouter.delete('/', checkToken, UserController.deleteOne);
 
-
-userRouter.post('/auth', UserController.auth);
-
 //// TODO: tokens
 
 module.exports = userRouter;
