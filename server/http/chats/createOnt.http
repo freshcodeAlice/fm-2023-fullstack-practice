@@ -1,0 +1,8 @@
+POST http://localhost:5000/api/chats HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDllN2E2NTczYzhlZWRjODU3NjE3OTkiLCJlbWFpbCI6InN1cGVyYXZlbmdlckBtLnNhIiwiaWF0IjoxNjg4MzczNDMzLCJleHAiOjE2ODgzNzQwMzN9.XrDRBRfXzFQfYbM1ZQ0ghFfOGlYba1W-d6RY8QGWPLY
+
+{
+    "name": "First super chat",
+    "members": ["649e7a6573c8eedc85761799", "649e7d982495c00c1f525bb8"]
+}
