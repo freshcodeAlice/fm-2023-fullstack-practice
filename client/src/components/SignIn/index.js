@@ -9,8 +9,11 @@ function SignIn() {
         password: ''
     }
     const submitHandler = (values, actions) => {
-        signIn(values)
-        .then(({data: {data}}) => console.log(data));
+        // signIn(values)
+        // .then(({data: {data}}) => {
+        //     props.sendData(data)
+        // });
+        props.sendData(signIn(values));
     }
 
     return (

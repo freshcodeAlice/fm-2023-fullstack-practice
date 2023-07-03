@@ -13,8 +13,11 @@ function SignUp() {
         birthday: format(new Date(), 'yyyy-MM-dd')
     }
     const submitHandler = (values, actions) => {
-        signUp()
-        .then(({data: {data}}) => console.log(data));
+        // signUp()
+        // .then(({data: {data}}) => {
+        //     props.sendData(data)
+        // });
+        props.sendData(signUp(values));
     }
 
     return (

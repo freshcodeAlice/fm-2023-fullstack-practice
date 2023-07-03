@@ -5,6 +5,16 @@ import styles from './Home.module.css';
 
 function Home(props) {
    const [view, setView] = useState(true);
+   const navigate = useNavigate();
+
+    const sendApiRequest = (response) => {
+        response.then(({data: {data}}) => {
+            props.sendUser(data);
+            navigate('/messenger');
+        })
+    }
+
+
 
    const clickHandler = () => {
     setView(!view);
@@ -15,7 +25,7 @@ function Home(props) {
     return (
     <div className={styles['main-wrapper']}>
         <button onClick={clickHandler}>{buttonText}</button>
-        {view ? <SignIn /> : <SignUp />}
+        {view ? <SignIn sendData={sendApiRequest}/> : <SignUp sendData={sendApiRequest}/>}
     </div>
     )
 }
