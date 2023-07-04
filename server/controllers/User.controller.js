@@ -9,8 +9,10 @@ module.exports.signUp = async(req, res, next) => {
        const {body} = req;
         const createdUser = await User.create(body);
         const token = await createToken({email, userId: createdUser._id});
+        const readyUser = Object.assign({}, createdUser._doc);
+        delete readyUser.passwordHash;
         res.status(201).send({
-            data: createdUser,
+            data: readyUser,
             token});
     } catch(error) {
         next(error)
@@ -44,8 +46,10 @@ module.exports.signIn = async(req, res, next) => {
         }
         /// Створити сесію користувача (створити токени і відправити їх назад для підтвердження аутентифікації)
         const token = await createToken({email, userId: foundUser._id});
+        const readyUser = Object.assign({}, foundUser._doc);
+        delete readyUser.passwordHash;
         res.status(200).send({
-            data: foundUser,
+            data: readyUser,
             token})
 
     } catch(error) {
