@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom";
 import SignIn from '../../components/SignIn';
 import SignUp from '../../components/SignUp';
 import styles from './Home.module.css';
@@ -8,7 +9,8 @@ function Home(props) {
    const navigate = useNavigate();
 
     const sendApiRequest = (response) => {
-        response.then(({data: {data}}) => {
+        response.then(({data: {data, token}}) => {
+            localStorage.setItem('token', token);
             props.sendUser(data);
             navigate('/messenger');
         })

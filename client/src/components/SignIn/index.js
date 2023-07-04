@@ -2,7 +2,7 @@ import {Formik, Form, Field} from 'formik';
 import {signIn} from '../../api/index';
 import styles from '../../pages/Home/Home.module.css';
 
-function SignIn() {
+function SignIn(props) {
 
     const initialValues = {
         email: '',

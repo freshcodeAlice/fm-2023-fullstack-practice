@@ -3,7 +3,7 @@ import {signUp} from '../../api/index';
 import {format} from 'date-fns';
 import styles from '../../pages/Home/Home.module.css';
 
-function SignUp() {
+function SignUp(props) {
 
     const initialValues = {
         firstName: '',
