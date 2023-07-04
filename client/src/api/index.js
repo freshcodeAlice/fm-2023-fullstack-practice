@@ -8,7 +8,11 @@ export const signIn = async (userData) => await httpClient.post('/users/sign-in'
 
 export const signUp = async (userData) => await httpClient.post('/users/sign-up', userData);
 
-
+export const getUserChats = async (token) => await httpClient.get('/chats/all', {
+    headers: {
+        'Authorization': `Bearer ${token}`
+    }
+});
 
 
 // const BASE_API = 'http://localhost:5000'

@@ -6,7 +6,7 @@ const promisifyJWTVerify = promisify(jwt.verify);
 
 const SECRET_VALUE = 'super-secret';
 
-const ACCESS_TIME = 600;
+const ACCESS_TIME = 3600;
 
 
 module.exports.createToken = async ({userId, email}) => {
