@@ -11,7 +11,7 @@ module.exports.signUp = async(req, res, next) => {
         const token = await createToken({email, userId: createdUser._id});
         res.status(201).send({
             data: createdUser,
-            token: token});
+            token});
     } catch(error) {
         next(error)
     }
@@ -44,7 +44,9 @@ module.exports.signIn = async(req, res, next) => {
         }
         /// Створити сесію користувача (створити токени і відправити їх назад для підтвердження аутентифікації)
         const token = await createToken({email, userId: foundUser._id});
-        res.status(200).send({token})
+        res.status(200).send({
+            data: foundUser,
+            token})
 
     } catch(error) {
         next(error)
