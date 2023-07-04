@@ -9,12 +9,12 @@ module.exports.signUp = async(req, res, next) => {
     try {
        const {body} = req;
         const createdUser = await User.create(body);
-        const token = await TokenService.createAccessToken({email, userId: createdUser._id});
+        const tokens = await TokenService.createTokenPair({email, userId: createdUser._id});
         const readyUser = Object.assign({}, createdUser._doc);
         delete readyUser.passwordHash;
         res.status(201).send({
             data: readyUser,
-            token});
+            tokens});
     } catch(error) {
         next(error)
     }
@@ -46,12 +46,12 @@ module.exports.signIn = async(req, res, next) => {
             throw new InvalidDataError('Invalid credentials');
         }
         /// Створити сесію користувача (створити токени і відправити їх назад для підтвердження аутентифікації)
-        const token = await TokenService.createAccessToken({email, userId: foundUser._id});
+        const tokens = await TokenService.createTokenPair({email, userId: foundUser._id});
         const readyUser = Object.assign({}, foundUser._doc);
         delete readyUser.passwordHash;
         res.status(200).send({
             data: readyUser,
-            token})
+            tokens})
 
     } catch(error) {
         next(error)
@@ -119,20 +119,20 @@ module.exports.refreshSession = async (req, res, next) => {
                 // Видаляємо з БД
                 const removed = await rtFromDB.deleteOne();
                 // Робимо нову пару токенів
-                const newAccessToken = await TokenService.createAccessToken({userId: foundUser._id, email: foundUser.email});
-                const newRefreshToken = await TokenService.createRefreshToken({userId: foundUser._id, email: foundUser.email});
+                // const newAccessToken = await TokenService.createAccessToken({userId: foundUser._id, email: foundUser.email});
+                // const newRefreshToken = await TokenService.createRefreshToken({userId: foundUser._id, email: foundUser.email});
+
+                const tokens = await TokenService.createTokenPair({userId: foundUser._id, 
+                                                            email: foundUser.email});
 
                 // записуємо новий рефреш-токен до БД
                 const add = await RefreshToken.create({
-                    token: newRefreshToken,
+                    token: tokens.refreshToken,
                     userId: foundUser._id
                 });
 
                 res.status(200).send({
-                    tokens: {
-                        accessToken: newAccessToken,
-                        refreshToken: newRefreshToken
-                    }
+                   tokens
                 })
             } else {
                 throw new TokenError('Token not found');
