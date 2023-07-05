@@ -4,11 +4,11 @@ const httpClient = axios.create({
     baseURL: 'http://localhost:5000/api'
 });
 
+/* Auth API */
+
 export const signIn = async (userData) => await httpClient.post('/users/sign-in', userData);
 
 export const signUp = async (userData) => await httpClient.post('/users/sign-up', userData);
-
-export const getUserChats = async () => await httpClient.get('/chats/all');
 
 export const logOut = async () => {
     localStorage.clear();
@@ -66,3 +66,22 @@ httpClient.interceptors.response.use((response)=>{
 
     /// Якщо 401 - перенаправити користувача на пере-авторизацію
 })
+
+export const getUserData = async () => await httpClient.get('/users/');
+
+export const deleteUser = async () => await httpClient.delete('/users/');
+
+/* Chat API */
+
+export const getUserChats = async () => await httpClient.get('/chats/all');
+
+
+export const createChat = async () => {}
+
+export const addMessage = async () => {}
+
+export const getChatWithMembers = async () => {}
+
+export const getCurrentChat = async () => {}
+
+export const addUserToChat = async () => {}
