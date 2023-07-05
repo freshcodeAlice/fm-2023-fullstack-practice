@@ -10,6 +10,11 @@ module.exports.signUp = async(req, res, next) => {
        const {body} = req;
         const createdUser = await User.create(body);
         const tokens = await TokenService.createTokenPair({email, userId: createdUser._id});
+        // Зберегти refreshToken до БД
+        const added = await RefreshToken.create({
+            token: tokens.refreshToken,
+            userId: createdUser._id
+        });
         const readyUser = Object.assign({}, createdUser._doc);
         delete readyUser.passwordHash;
         res.status(201).send({
@@ -47,6 +52,11 @@ module.exports.signIn = async(req, res, next) => {
         }
         /// Створити сесію користувача (створити токени і відправити їх назад для підтвердження аутентифікації)
         const tokens = await TokenService.createTokenPair({email, userId: foundUser._id});
+        // Зберегти refreshToken до БД
+        const added = await RefreshToken.create({
+            token: tokens.refreshToken,
+            userId: foundUser._id
+        });
         const readyUser = Object.assign({}, foundUser._doc);
         delete readyUser.passwordHash;
         res.status(200).send({
