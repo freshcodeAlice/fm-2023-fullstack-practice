@@ -8,14 +8,13 @@ const DialogList = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-       const token = localStorage.getItem('token');
-       getUserChats(token)
+       getUserChats()
        .then(({data: {data}}) => {
         setList(data);
        })
        .catch(err => {
         console.log(err);
-        navigate('/');
+ //       navigate('/');
        })
     }, []);
 

@@ -7,6 +7,11 @@ import Dashboard from './pages/Dashboard';
 function App() {
   const [user, setUser] = useState(null);
 
+  /*
+  Нам потрібно навчитись перенаправляти юзера на інші сторінки з не-компонент
+  Потрібен об'єкт history
+
+  */
 
   return (
    <BrowserRouter>

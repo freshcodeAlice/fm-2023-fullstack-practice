@@ -1,4 +1,4 @@
-const {verifyToken} = require('../services/tokenService');
+const {verifyAccessToken} = require('../services/tokenService');
 const TokenError = require('../errors/TokenError');
 
 module.exports.checkToken = async (req, res, next) => {
@@ -9,7 +9,7 @@ module.exports.checkToken = async (req, res, next) => {
         }
         const [, token]= authorization.split(' ');
         console.log(token);
-        req.payload = await verifyToken(token);
+        req.payload = await verifyAccessToken(token);
         console.log(req.payload);
        next();
     } catch(error) {

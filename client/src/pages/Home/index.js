@@ -9,8 +9,7 @@ function Home(props) {
    const navigate = useNavigate();
 
     const sendApiRequest = (response) => {
-        response.then(({data: {data, token}}) => {
-            localStorage.setItem('token', token);
+        response.then(({data: {data}}) => {
             props.sendUser(data);
             navigate('/messenger');
         })
