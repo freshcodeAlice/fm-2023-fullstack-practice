@@ -6,6 +6,7 @@ import MyComponent from './MyComponent';
 
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 
@@ -41,8 +42,9 @@ function rootReducer (state = initialState, action) {
         }
 }
 
+const enhancer = composeWithDevTools();
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, enhancer);
 
 function App() {
   // const [user, setUser] = useState(null);

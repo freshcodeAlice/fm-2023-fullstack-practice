@@ -106,7 +106,12 @@ connect(mapStateToProps, mapDispatchToProps)(MyComponent)
 
 
 
-mapStateToProps - 
+mapStateToProps - функція, яка приймає весь об'єкт стану і повертає ту його частину, яка стосується поточної компоненти,
+значення зі стану вкладаються компоненті у пропси
+
+mapDispatchToProps - або функція, що повертає об'єкт, або об'єкт,
+що містить actionCreator-и, огорнуті викликом dispatch
+
 */
 
 
