@@ -78,7 +78,7 @@ export const getUserChats = async () => await httpClient.get('/chats/all');
 
 export const createChat = async () => {}
 
-export const addMessage = async () => {}
+export const addMessage = async ({body, chatId}) => await httpClient.post(`/:${chatId}`, body);
 
 export const getChatWithMembers = async () => {}
 
