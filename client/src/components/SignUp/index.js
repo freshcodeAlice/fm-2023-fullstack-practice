@@ -2,6 +2,7 @@ import {Formik, Form, Field} from 'formik';
 import {format} from 'date-fns';
 import styles from '../../pages/Home/Home.module.css';
 import {registerUserRequest} from '../../actions/actionCreators';
+import {connect} from 'react-redux';
 
 function SignUp(props) {
 

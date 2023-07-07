@@ -7,12 +7,7 @@ const initialState = {
         id: 147
     },
     chatList: [],
-    currentChat: {
-        _id: 3432423423,
-        name: 'First chat',
-        members: [],
-        messages: []
-    },
+    currentChat: null,
     isFetching: false,
     errors: null
 }

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import styles from './MessageArea.module.css';
-import {addMessage} from '../../actions/actionCreators';
+import {addMessageRequest} from '../../actions/actionCreators';
 
 const MessageArea = () => {
     const [message, setMessage] = useState();

@@ -1,6 +1,7 @@
 import {Formik, Form, Field} from 'formik';
 import styles from '../../pages/Home/Home.module.css';
 import {loginUserRequest} from '../../actions/actionCreators';
+import {connect} from 'react-redux';
 
 function SignIn(props) {
 

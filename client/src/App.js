@@ -1,11 +1,24 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {unstable_HistoryRouter as HistoryRouter, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import store from './store';
-
+import history from './history';
 import {Provider} from 'react-redux';
 
+/*
+TODO: 
+Реалізувати
+- отримання всіх чатів юзера 
+- Компонента чат має виводити всі повідомлення в цьому чаті
+- Нове повідомлення має надсилатись на сервер, і додаватися до поточної історії повідомлень
+- механізм logOut юзера
 
+* - додавати юзерів до чату
+* - видаляти юзерів в чату
+* - присилати разом з повідомленнями файли
+
+
+*/
 
 
 
@@ -20,12 +33,12 @@ function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <HistoryRouter history={history}>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/messenger' element={<Dashboard />} />
         </Routes>
-      </BrowserRouter>
+      </HistoryRouter>
    </Provider>
   );
 

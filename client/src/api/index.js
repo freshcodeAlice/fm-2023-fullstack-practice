@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 
 const httpClient = axios.create({
     baseURL: 'http://localhost:5000/api'
@@ -12,6 +13,8 @@ export const signUp = async (userData) => await httpClient.post('/users/sign-up'
 
 export const logOut = async () => {
     localStorage.clear();
+    // перенаправляємо юзера логінитись
+    history.replace('/');
 }
 
 export const refreshSession = async () => {
