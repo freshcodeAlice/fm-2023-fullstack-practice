@@ -12,7 +12,7 @@ const MessageArea = () => {
             body: message,
             chatId: props.currentChat._id
         }
-        props.addMessage(newMessage);
+        props.addMessageRequest(newMessage);
     }
 
     const changeHandler = ({target: {value}}) => {
@@ -35,7 +35,7 @@ const MessageArea = () => {
 const mapStateToProps = ({currentChat}) => ({currentChat})
 
 const mapDispatchToProps = {
-    addMessage
+    addMessageRequest
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageArea);

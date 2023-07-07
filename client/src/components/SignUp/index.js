@@ -1,7 +1,7 @@
 import {Formik, Form, Field} from 'formik';
-import {signUp} from '../../api/index';
 import {format} from 'date-fns';
 import styles from '../../pages/Home/Home.module.css';
+import {registerUserRequest} from '../../actions/actionCreators';
 
 function SignUp(props) {
 
@@ -13,11 +13,7 @@ function SignUp(props) {
         birthday: format(new Date(), 'yyyy-MM-dd')
     }
     const submitHandler = (values, actions) => {
-        // signUp()
-        // .then(({data: {data}}) => {
-        //     props.sendData(data)
-        // });
-        props.sendData(signUp(values));
+       props.registerUserRequest(values);
     }
 
     return (
@@ -38,6 +34,6 @@ function SignUp(props) {
         </Formik>
     )
 }
-
-
-export default SignUp;
+export default connect(null, {
+    registerUserRequest
+})(SignUp);

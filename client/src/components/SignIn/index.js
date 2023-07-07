@@ -1,6 +1,6 @@
 import {Formik, Form, Field} from 'formik';
-import {signIn} from '../../api/index';
 import styles from '../../pages/Home/Home.module.css';
+import {loginUserRequest} from '../../actions/actionCreators';
 
 function SignIn(props) {
 
@@ -9,11 +9,7 @@ function SignIn(props) {
         password: ''
     }
     const submitHandler = (values, actions) => {
-        // signIn(values)
-        // .then(({data: {data}}) => {
-        //     props.sendData(data)
-        // });
-        props.sendData(signIn(values));
+      props.loginUserRequest(values);
     }
 
     return (
@@ -33,4 +29,6 @@ function SignIn(props) {
 }
 
 
-export default SignIn;
+export default connect(null, {
+    loginUserRequest
+})(SignIn);

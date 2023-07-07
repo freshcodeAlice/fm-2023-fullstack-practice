@@ -8,12 +8,12 @@ function Home(props) {
    const [view, setView] = useState(true);
    const navigate = useNavigate();
 
-    const sendApiRequest = (response) => {
-        response.then(({data: {data}}) => {
-            props.sendUser(data);
-            navigate('/messenger');
-        })
-    }
+    // const sendApiRequest = (response) => {
+    //     response.then(({data: {data}}) => {
+    //         props.sendUser(data);
+    //         navigate('/messenger');
+    //     })
+    // }
 
 
 
