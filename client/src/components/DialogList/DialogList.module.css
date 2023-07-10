@@ -4,3 +4,17 @@
     background-color: bisque;
     border: 2px solid gray;
 }
+
+.dialog-item {
+    width: 100%;
+    padding: 4%;
+    margin: 1% 0;
+}
+
+.dialog-item:hover {
+    background-color: rgb(208, 223, 238);
+    cursor: pointer;
+}
+.current-dialog {
+    background-color: rgb(165, 194, 223);
+}

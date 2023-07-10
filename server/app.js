@@ -11,6 +11,11 @@ app.use('/api/', apiRouter);
 
 app.use(errorHandling);
 
-//// TODO: error handling
+/* TODO: 
+1. Додати юзерам аватарки
+2. Додати чатам аватарки
+3. Додати повідомленням дату відправки
+
+*/
 
 module.exports = app;
