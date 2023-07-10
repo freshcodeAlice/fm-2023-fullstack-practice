@@ -54,4 +54,19 @@ export const addMessageError = (error) => ({
     error
 })
 
+///
 
+export const getChatListRequest = (payload) => ({
+    type: ACTION_TYPES.GET_CHAT_LIST_REQUEST,
+    payload
+});
+
+export const getChatListSuccess = (data) => ({
+    type: ACTION_TYPES.GET_CHAT_LIST_SUCCESS,
+    data
+});
+
+export const getChatListError = (error) => ({
+    type: ACTION_TYPES.GET_CHAT_LIST_ERROR,
+    error
+})

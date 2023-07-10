@@ -9,6 +9,7 @@ function* rootSaga() {
     yield takeLatest(ACTION_TYPES.REGISTER_USER_REQUEST, signUpUserSaga);
     //// chats sagas
     yield takeLatest(ACTION_TYPES.ADD_MESSAGE_REQUEST, addMessageSaga);
+    yield takeLatest(ACTION_TYPES.GET_CHAT_LIST_REQUEST, getChatList);
 }
 
 

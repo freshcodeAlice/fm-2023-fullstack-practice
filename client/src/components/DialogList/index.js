@@ -1,33 +1,32 @@
 import React, {useEffect, useState} from 'react';
-import {getUserChats} from '../../api';
 import { useNavigate } from "react-router-dom";
+import {getChatListRequest} from '../../actions/actionCreators';
 import styles from './DialogList.module.css';
+import {connect} from 'react-redux';
 
 const DialogList = () => {
-    const [list, setList] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-       getUserChats()
-       .then(({data: {data}}) => {
-        setList(data);
-       })
-       .catch(err => {
-        console.log(err);
- //       navigate('/');
-       })
-    }, []);
+    useEffect(()=>{
+        props.getChatListRequest();
+    }, [])
 
     const mapList = (chat) => <li key={chat._id} >{chat.name}</li>
 
     return (
         <div className={styles.dialog}>
             <ul>
-                {list && list.map(mapList)}
+                {props.chatList && props.chatList.map(mapList)}
             </ul>
         </div>
 
     );
 }
 
-export default DialogList;
+const mapStateToProps = ({chatList}) => ({chatList});
+
+const mapDispatchToProps = {
+    getChatListRequest
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DialogList);

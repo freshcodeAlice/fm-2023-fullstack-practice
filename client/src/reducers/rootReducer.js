@@ -1,11 +1,7 @@
 import ACTION_TYPES from "../actions/actionTypes";
 
 const initialState = {
-    user: {
-        firstName: 'John',
-        lastName: 'Doe',
-        id: 147
-    },
+    user: null,
     chatList: [],
     currentChat: null,
     isFetching: false,
@@ -15,6 +11,7 @@ const initialState = {
 function rootReducer (state = initialState, action) {
     console.log(action);
     switch(action.type) {
+       case ACTION_TYPES.GET_CHAT_LIST_REQUEST:
        case ACTION_TYPES.ADD_MESSAGE_REQUEST: {
         return {
             ...state,
@@ -32,6 +29,7 @@ function rootReducer (state = initialState, action) {
        }
        case ACTION_TYPES.ADD_MESSAGE_ERROR: 
        case ACTION_TYPES.LOGIN_USER_ERROR:
+       case ACTION_TYPES.GET_CHAT_LIST_ERROR:
        case ACTION_TYPES.REGISTER_USER_ERROR: {
         return {
             ...state,
@@ -39,10 +37,16 @@ function rootReducer (state = initialState, action) {
         }
        }
        case ACTION_TYPES.LOGIN_USER_SUCCESS:
-        case ACTION_TYPES.REGISTER_USER_SUCCESS: {
+       case ACTION_TYPES.REGISTER_USER_SUCCESS: {
         return {
             ...state,
             user: action.data
+        }
+       }
+       case ACTION_TYPES.GET_CHAT_LIST_SUCCESS: {
+        return {
+            ...state,
+            chatList: action.data
         }
        }
     }
