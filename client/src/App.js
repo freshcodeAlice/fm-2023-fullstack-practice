@@ -1,9 +1,10 @@
 import {unstable_HistoryRouter as HistoryRouter, Routes, Route} from 'react-router-dom';
+import { useEffect } from 'react';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-import store from './store';
+import {connect} from 'react-redux';
 import history from './history';
-import {Provider} from 'react-redux';
+import {getUserDataRequest} from './actions/actionCreators';
 
 /*
 TODO: 
@@ -23,8 +24,19 @@ TODO:
 
 
 
-function App() {
+function App(props) {
   
+
+/// Якщо ми перезавантажились, і у нас нема об'єкта юзера, але в localStorage є токени - зробити запит на отримання об'єкта юзера
+
+    useEffect(() => {
+      if(!props.user) {
+        props.getUserDataRequest()
+      }
+    
+    }, []);
+
+
 
   /*
   Нам потрібно навчитись перенаправляти юзера на інші сторінки з не-компонент
@@ -33,19 +45,23 @@ function App() {
   */
 
   return (
-    <Provider store={store}>
+
       <HistoryRouter history={history}>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/messenger' element={<Dashboard />} />
         </Routes>
       </HistoryRouter>
-   </Provider>
+
   );
 
 }
 
-export default App;
+const mapStateToProps = ({user})=> ({user});
+
+const mapDispatchToProps = {getUserDataRequest}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 
 /*

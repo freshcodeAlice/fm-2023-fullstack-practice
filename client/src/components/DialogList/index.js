@@ -1,17 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
-import {getChatListRequest} from '../../actions/actionCreators';
+import {getChatListRequest, getCurrentChatRequest} from '../../actions/actionCreators';
 import styles from './DialogList.module.css';
 import {connect} from 'react-redux';
 
-const DialogList = () => {
+const DialogList = (props) => {
     const navigate = useNavigate();
 
     useEffect(()=>{
         props.getChatListRequest();
     }, [])
 
-    const mapList = (chat) => <li key={chat._id} >{chat.name}</li>
+    const changeCurrentChat = (chatId) => {
+        /// згенерувати action, який змінить поточний чат
+        props.getCurrentChatRequest(chatId);
+    }
+
+    const mapList = (chat) => <li key={chat._id} onClick={()=>{changeCurrentChat(chat._id)}}>{chat.name}</li>
 
     return (
         <div className={styles.dialog}>
@@ -26,7 +31,8 @@ const DialogList = () => {
 const mapStateToProps = ({chatList}) => ({chatList});
 
 const mapDispatchToProps = {
-    getChatListRequest
+    getChatListRequest,
+    getCurrentChatRequest
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DialogList);

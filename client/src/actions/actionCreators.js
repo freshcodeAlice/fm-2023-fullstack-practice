@@ -35,6 +35,23 @@ export const registerUserError = (error) => ({
     error
 })
 
+////
+
+export const getUserDataRequest = (payload) => ({
+    type: ACTION_TYPES.GET_USER_DATA_REQUEST,
+    payload
+});
+
+export const getUserDataSuccess = (data) => ({
+    type: ACTION_TYPES.GET_USER_DATA_SUCCESS,
+    data
+});
+
+export const getUserDataError = (error) => ({
+    type: ACTION_TYPES.GET_USER_DATA_ERROR,
+    error
+})
+
 
 
 /// chats
@@ -68,5 +85,22 @@ export const getChatListSuccess = (data) => ({
 
 export const getChatListError = (error) => ({
     type: ACTION_TYPES.GET_CHAT_LIST_ERROR,
+    error
+})
+
+///
+
+export const getCurrentChatRequest = (payload) => ({
+    type: ACTION_TYPES.GET_CURRENT_CHAT_REQUEST,
+    payload
+})
+
+export const getCurrentChatSuccess = (data) => ({
+    type: ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS,
+    data
+})
+
+export const getCurrentChatError = (error) => ({
+    type: ACTION_TYPES.GET_CURRENT_CHAT_ERROR,
     error
 })

@@ -70,8 +70,12 @@ module.exports.signIn = async(req, res, next) => {
 
 module.exports.getOne = async(req, res, next) => {
     try {
-        const {params: {id}} = req;
-        const foundUser = await User.findById(id);
+        const {payload: {userId}} = req;
+        const foundUser = await User.findById(userId);
+        if (!foundUser) { 
+            throw new NotFoundError('User not found')
+        }
+        /// Потребує покращення - якщо не знайшли юзера - маємо відповідати 404 помилкою
         res.status(200).send({data: foundUser});
     } catch(error) {
         next(error)

@@ -25,6 +25,13 @@ export function* signUpUserSaga(action) {
 }
 
 
-export function* getUserData() {}
+export function* getUserDataSaga(action) {
+    try {   
+        const {data: {data}} = yield API.getUserData();
+       yield put(actionCreators.getUserDataSuccess(data));
+     } catch(error) {
+         yield put(actionCreators.getUserDataError(error));
+     }
+}
 
 export function* deleteUser(){}

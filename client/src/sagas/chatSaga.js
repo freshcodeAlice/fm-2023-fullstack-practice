@@ -26,3 +26,13 @@ export function* getChatList(action) {
         yield put(ActionCreators.getChatListError(error));
     }
 }
+
+
+export function* getCurrentChat(action) {
+    try {
+        const {data: {data}} = yield API.getCurrentChat(action.payload);
+        yield put(ActionCreators.getCurrentChatSuccess(data))
+    } catch(error) {
+        yield put(ActionCreators.getCurrentChatError(error));
+    }
+}
