@@ -2,9 +2,9 @@ import {unstable_HistoryRouter as HistoryRouter, Routes, Route} from 'react-rout
 import { useEffect } from 'react';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-import {connect} from 'react-redux';
+
 import history from './history';
-import {getUserDataRequest} from './actions/actionCreators';
+
 
 /*
 TODO: 
@@ -27,15 +27,6 @@ TODO:
 function App(props) {
   
 
-/// Якщо ми перезавантажились, і у нас нема об'єкта юзера, але в localStorage є токени - зробити запит на отримання об'єкта юзера
-
-    useEffect(() => {
-      if(!props.user) {
-        props.getUserDataRequest()
-      }
-    
-    }, []);
-
 
 
   /*
@@ -57,11 +48,7 @@ function App(props) {
 
 }
 
-const mapStateToProps = ({user})=> ({user});
-
-const mapDispatchToProps = {getUserDataRequest}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 
 
 /*

@@ -39,7 +39,6 @@ function rootReducer (state = initialState, action) {
         }
        }
        case ACTION_TYPES.LOGIN_USER_SUCCESS:
-        case ACTION_TYPES.GET_USER_DATA_SUCCESS: 
        case ACTION_TYPES.REGISTER_USER_SUCCESS: {
         return {
             ...state,
@@ -56,6 +55,13 @@ function rootReducer (state = initialState, action) {
         return {
             ...state,
             chatList: action.data
+        }
+       }
+       case ACTION_TYPES.GET_USER_DATA_SUCCESS: {
+        return {
+            ...state,
+            user: action.data.user,
+            chatList: action.data.chatList
         }
        }
        default: {

@@ -6,6 +6,7 @@ const InvalidDataError = require('./errors/InvalidDataError');
 const {TokenExpiredError, JsonWebTokenError} = require('jsonwebtoken');
 
 module.exports.errorHandling = async (err, req, res, next) => {
+    console.log(err);
     if (err instanceof CryptError || err instanceof ValidationError || err instanceof InvalidDataError) {
         return res.status(400).send({error: err.message})
     }

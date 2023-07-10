@@ -1,4 +1,4 @@
-const {User, RefreshToken} = require('../models');
+const {User, RefreshToken, Chat} = require('../models');
 const TokenError = require('../errors/TokenError');
 const NotFoundError = require('../errors/NotFoundError');
 const InvalidDataError = require('../errors/InvalidDataError');
@@ -75,8 +75,17 @@ module.exports.getOne = async(req, res, next) => {
         if (!foundUser) { 
             throw new NotFoundError('User not found')
         }
-        /// Потребує покращення - якщо не знайшли юзера - маємо відповідати 404 помилкою
-        res.status(200).send({data: foundUser});
+        const readyUser = Object.assign({}, foundUser._doc);
+        delete readyUser.passwordHash;
+        // Якщо юзер є, знайти всі його чати і віддати разом з юзером
+        const usersChats = await Chat.find({
+            members: userId
+        });
+        res.status(200).send({data: {
+                user: readyUser,
+                chatList: usersChats
+            }
+        });
     } catch(error) {
         next(error)
     }
