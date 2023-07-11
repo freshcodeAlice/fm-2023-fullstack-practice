@@ -74,6 +74,8 @@ export const getUserData = async () => await httpClient.get('/users/');
 
 export const deleteUser = async () => await httpClient.delete('/users/');
 
+export const updateUser = async (body) => await httpClient.put('/users/', body);
+
 /* Chat API */
 
 export const getUserChats = async () => await httpClient.get('/chats/all');

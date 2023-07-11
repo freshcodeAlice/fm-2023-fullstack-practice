@@ -35,3 +35,13 @@ export function* getUserDataSaga(action) {
 }
 
 export function* deleteUser(){}
+
+
+export function* updateUserSaga(action) {
+    try {   
+        const {data: {data}} = yield API.updateUser(action.payload);
+       yield put(actionCreators.updateUserSuccess(data));
+     } catch(error) {
+         yield put(actionCreators.updateUserError(error));
+     }
+}

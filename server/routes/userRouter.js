@@ -8,8 +8,7 @@ userRouter.post('/sign-up', hashPass, UserController.signUp); //signUp
 userRouter.post('/sign-in', UserController.signIn); //signIn
 userRouter.get('/', checkToken, UserController.getOne);
 userRouter.delete('/', checkToken, UserController.deleteOne);
-
-userRouter.post('/refresh', UserController.refreshSession);
+userRouter.put('/', checkToken, UserController.updateOne);
 //// TODO: tokens
 
 module.exports = userRouter;

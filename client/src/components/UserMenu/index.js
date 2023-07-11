@@ -2,6 +2,7 @@ import React, {useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import styles from './UserMenu.module.css';
 import UserMenuModal from './UserMenuModal';
+import {updateUserRequest} from '../../actions/actionCreators';
 
 const UserMenu = (props) => {
     const [modalOpen, setOpen] = useState(false);
@@ -18,6 +19,10 @@ const UserMenu = (props) => {
          const lastName = lastNameInputRef.current.value;
          console.log(firstName, lastName);
          // це має призвести до відправки action
+         props.updateUserRequest({
+            firstName,
+            lastName
+         })
     }
 
     return (
@@ -68,7 +73,7 @@ const UserMenu = (props) => {
 const mapStateToProps = ({user}) => ({user})
 
 const mapDispatchToProps = {
-
+    updateUserRequest
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

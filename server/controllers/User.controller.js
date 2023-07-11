@@ -4,6 +4,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const InvalidDataError = require('../errors/InvalidDataError');
 const TokenService = require('../services/tokenService');
 const bcrypt = require('bcrypt');
+const {deletePassword} = require('../utils/deletePassword');
 
 module.exports.signUp = async(req, res, next) => {
     try {
@@ -13,10 +14,9 @@ module.exports.signUp = async(req, res, next) => {
         // Зберегти refreshToken до БД
         const added = await RefreshToken.create({
             token: tokens.refreshToken,
-            userId: createdUser._id
+            userId: deletePassword._id
         });
-        const readyUser = Object.assign({}, createdUser._doc);
-        delete readyUser.passwordHash;
+        const readyUser = deletePassword(createdUser);
         res.status(201).send({
             data: readyUser,
             tokens});
@@ -57,8 +57,7 @@ module.exports.signIn = async(req, res, next) => {
             token: tokens.refreshToken,
             userId: foundUser._id
         });
-        const readyUser = Object.assign({}, foundUser._doc);
-        delete readyUser.passwordHash;
+        const readyUser = deletePassword(foundUser);
         res.status(200).send({
             data: readyUser,
             tokens})
@@ -75,8 +74,7 @@ module.exports.getOne = async(req, res, next) => {
         if (!foundUser) { 
             throw new NotFoundError('User not found')
         }
-        const readyUser = Object.assign({}, foundUser._doc);
-        delete readyUser.passwordHash;
+        const readyUser = deletePassword(foundUser);
         // Якщо юзер є, знайти всі його чати і віддати разом з юзером
         const usersChats = await Chat.find({
             members: userId
@@ -100,6 +98,18 @@ module.exports.deleteOne = async(req, res, next) => {
         next(error)
     }
 } 
+
+module.exports.updateOne = async(req, res, next) => {
+    try {
+        const {body, payload: {userId}} = req;
+        const updated = await User.findByIdAndUpdate(userId, {...body}, {returnDocument: 'after'});
+        const readyUser = deletePassword(updated);
+        res.status(200).send({data: readyUser});
+
+    } catch(error) {
+        next(error)
+    }
+}
 
 /*
 1. Якщо ми прийшли рефрешити сесію, то ми маємо принести refreshToken
