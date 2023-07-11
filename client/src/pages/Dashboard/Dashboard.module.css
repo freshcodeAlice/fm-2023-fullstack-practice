@@ -18,3 +18,7 @@ body {
     width: 80vw;
 }
 
+.aside {
+    display: flex;
+    flex-direction: column;
+}

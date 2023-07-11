@@ -4,3 +4,18 @@
     background-color: ivory;
     border: 1px solid lightgray;
 }
+
+.form {
+    display: flex;
+    flex-direction: row;
+}
+
+.textarea {
+   flex: 1;
+    height: 18vh;
+}
+
+.button-send {
+    padding: 1.5%;
+    font-size: 2.5rem;
+}

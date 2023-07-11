@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import Chat from '../../components/Chat';
 import DialogList from '../../components/DialogList';
 import MessageArea from '../../components/MessageArea';
+import UserMenu from '../../components/UserMenu';
 import styles from './Dashboard.module.css';
 import {connect} from 'react-redux';
 import {getUserDataRequest, getChatListRequest} from '../../actions/actionCreators';
@@ -24,7 +25,10 @@ const Dashboard = (props) => {
 
     return (
         <main className={styles.main}>
+            <div className={styles.aside}>
+            <UserMenu />
             <DialogList />
+            </div>
             <section className={styles.container}>
                 <Chat />
                 <MessageArea />

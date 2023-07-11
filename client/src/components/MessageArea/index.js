@@ -4,15 +4,18 @@ import styles from './MessageArea.module.css';
 import {addMessageRequest} from '../../actions/actionCreators';
 
 const MessageArea = (props) => {
-    const [message, setMessage] = useState();
+    const [message, setMessage] = useState('');
 
     const submitHandler = (event) => {
         event.preventDefault();
-        const newMessage = {
-            body: message,
-            chatId: props.currentChat._id
+        if(message) {
+            const newMessage = {
+                body: message,
+                chatId: props.currentChat._id
+            }
+            props.addMessageRequest(newMessage);
+            setMessage('');
         }
-        props.addMessageRequest(newMessage);
     }
 
     const changeHandler = ({target: {value}}) => {
@@ -21,12 +24,14 @@ const MessageArea = (props) => {
 
     return (
         <div className={styles.container}>
-            <form onSubmit={submitHandler} >
+            <form onSubmit={submitHandler} 
+            className={styles['form']}>
                 <textarea
                 name="message"
                 value={message}
-                onChange={changeHandler} />
-                <button>Submit</button>
+                onChange={changeHandler} 
+                className={styles.textarea}/>
+                <button className={styles['button-send']}>&#10146;</button>
             </form>
         </div>
     );
