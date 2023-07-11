@@ -7,11 +7,10 @@ export function* addMessageSaga(action) {
         const result = yield API.addMessage(action.payload);
 
         //  Якщо запит був успішний - створити "успішний" action і віднести його до reducer-а 
-        const action = ActionCreators.addMessageSuccess(result.data.data);
-        yield put(action);
+        yield put( ActionCreators.addMessageSuccess(result.data.data));
     } catch(error) {
         //  Якщо запит був неуспішний - створити "помилковий" action і віднести його до reducer-а 
-        const errorAction = addMessageError(error);
+        const errorAction = ActionCreators.addMessageError(error);
         yield put(errorAction);
     }
 

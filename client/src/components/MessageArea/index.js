@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styles from './MessageArea.module.css';
 import {addMessageRequest} from '../../actions/actionCreators';
 
-const MessageArea = () => {
+const MessageArea = (props) => {
     const [message, setMessage] = useState();
 
     const submitHandler = (event) => {
