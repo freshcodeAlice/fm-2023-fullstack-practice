@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import styles from './UserMenu.module.css';
 import UserMenuModal from './UserMenuModal';
-import {updateUserRequest} from '../../actions/actionCreators';
+import {updateUserRequest, logOut} from '../../actions/actionCreators';
 
 const UserMenu = (props) => {
     const [modalOpen, setOpen] = useState(false);
@@ -61,7 +61,7 @@ const UserMenu = (props) => {
                             {editMode ? 
                                 <button onClick={submitEdit}>Save</button> : 
                                 <button onClick={()=>{setEdit(!editMode)}}>Edit</button>}
-                            <button>logOut</button>
+                            <button onClick={props.logOut}>logOut</button>
                         </div>
                     )
                 }}
@@ -73,7 +73,8 @@ const UserMenu = (props) => {
 const mapStateToProps = ({user}) => ({user})
 
 const mapDispatchToProps = {
-    updateUserRequest
+    updateUserRequest,
+    logOut
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

@@ -71,6 +71,13 @@ export const updateUserError = (error) => ({
 })
 
 
+////
+
+
+export const logOut = (error) => ({
+    type: ACTION_TYPES.LOGOUT
+})
+
 
 /// chats
 

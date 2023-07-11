@@ -45,3 +45,7 @@ export function* updateUserSaga(action) {
          yield put(actionCreators.updateUserError(error));
      }
 }
+
+export function* logOutSaga(){
+    yield API.logOut();
+}

@@ -68,6 +68,11 @@ function rootReducer (state = initialState, action) {
         }
        }
 
+       case ACTION_TYPES.LOGOUT: {
+        return {
+            ...initialState
+        }
+       }
       
        default: {
         return state;
