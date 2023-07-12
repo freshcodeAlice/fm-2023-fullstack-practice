@@ -22,13 +22,3 @@
     background-color: coral;
 }
 
-.modal-user-data {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.modal-user-data * {
-    margin-bottom: 10px;
-}

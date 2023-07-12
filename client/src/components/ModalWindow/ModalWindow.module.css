@@ -24,3 +24,14 @@
     top: 0;
     right: 0;
 }
+
+.modal-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modal-data * {
+    margin-bottom: 10px;
+}

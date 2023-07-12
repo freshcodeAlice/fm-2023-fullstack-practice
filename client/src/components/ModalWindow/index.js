@@ -18,7 +18,9 @@ const ModalWindow = (props) => {
         <div className={styles['background']} onClick={closeHandler}>
             <div className={styles['modal-container']}>
                 <button onClick={closeHandler} className={styles['button-close']}>X</button>
+                <div className={styles['modal-data']}>
                 {props.children([editMode, setEdit])}
+                </div>
             </div>
         </div>
     );

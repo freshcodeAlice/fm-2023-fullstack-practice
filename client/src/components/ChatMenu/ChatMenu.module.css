@@ -1,5 +1,16 @@
 .menu-container {
     padding: 1%;
     background-color: cadetblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
+.chat-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: blueviolet;
+    margin-right: 2%;
 }

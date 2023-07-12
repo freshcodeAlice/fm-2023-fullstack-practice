@@ -41,7 +41,7 @@ const UserMenu = (props) => {
                     }
 
                     return(
-                        <div className={styles['modal-user-data']}>
+                        <>
                             <img src={props.user?.avatar} className={styles['full-avatar']}/>
                             <h1>
                                 {props.user?.firstName} {props.user?.lastName}                           
@@ -62,7 +62,7 @@ const UserMenu = (props) => {
                                 <button onClick={submitEdit}>Save</button> : 
                                 <button onClick={()=>{setEdit(!editMode)}}>Edit</button>}
                             <button onClick={props.logOut}>logOut</button>
-                        </div>
+                        </>
                     )
                 }}
        </ModalWindow> }
