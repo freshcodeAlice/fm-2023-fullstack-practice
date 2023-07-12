@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import styles from './UserMenu.module.css';
 import ModalWindow from '../ModalWindow';
 import {updateUserRequest, logOut} from '../../actions/actionCreators';
+import CONSTANTS from '../../constants';
 
 const UserMenu = (props) => {
     const [modalOpen, setOpen] = useState(false);
@@ -14,7 +15,6 @@ const UserMenu = (props) => {
     }
 
     const submitData = () => {
-         console.log('edit done');
          const firstName = firstNameInputRef.current.value;
          const lastName = lastNameInputRef.current.value;
          console.log(firstName, lastName);
@@ -25,10 +25,12 @@ const UserMenu = (props) => {
          })
     }
 
+    const imageSrc = props.user.imagePath || CONSTANTS.USER_PLACEHOLDER;
+
     return (
         <>
         <div className={styles['user-menu-container']} onClick={modalHandler}>
-            <img src={props.user?.avatar} className={styles.avatar}/>
+            <img src={imageSrc} className={styles.avatar}/>
           
             <p>{props.user?.firstName} {props.user?.lastName}</p>
         </div>
@@ -42,7 +44,7 @@ const UserMenu = (props) => {
 
                     return(
                         <>
-                            <img src={props.user?.avatar} className={styles['full-avatar']}/>
+                            <img src={props.user?.imagePath} className={styles['full-avatar']}/>
                             <h1>
                                 {props.user?.firstName} {props.user?.lastName}                           
                             </h1>

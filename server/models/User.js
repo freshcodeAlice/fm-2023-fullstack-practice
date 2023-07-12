@@ -12,7 +12,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    birthday: Date
+    birthday: Date,
+    imagePath:  String
 });
 
 

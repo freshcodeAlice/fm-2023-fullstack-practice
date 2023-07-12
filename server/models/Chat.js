@@ -9,7 +9,8 @@ const chatSchema = new Schema({
     messages: [{
         type: Schema.Types.ObjectId,
         ref: 'Message'
-    }]
+    }],
+    imagePath: String
 });
 
 const Chat = model('Chat', chatSchema);

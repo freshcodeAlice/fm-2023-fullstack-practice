@@ -9,8 +9,10 @@ const {deletePassword} = require('../utils/deletePassword');
 module.exports.signUp = async(req, res, next) => {
     try {
        const {body} = req;
-        const createdUser = await User.create(body);
-        const tokens = await TokenService.createTokenPair({email, userId: createdUser._id});
+        const createdUser = await User.create({...body});
+        const tokens = await TokenService.createTokenPair({
+            email, 
+            userId: createdUser._id});
         // Зберегти refreshToken до БД
         const added = await RefreshToken.create({
             token: tokens.refreshToken,

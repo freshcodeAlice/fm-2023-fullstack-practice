@@ -29,6 +29,7 @@ function SignUp(props) {
                     <Field name="email" placeholder="Type your email" />
                     <Field name="password" placeholder="Type your pass" />
                     <Field name="birthday" placeholder="Type your email" type="date"/>
+                    <Field name="avatar" type="file" />
                     <button type="submit">Submit</button>
                 </Form>
             )}
