@@ -1,11 +1,10 @@
 .chat {
-    width: 100%;
-    height: 80%;
     border: 1px solid lightgray;
     background-color: lemonchiffon;
     display: flex;
     flex-direction: column;
    align-items: flex-start;
+   flex-grow: 8;
 }
 
 .message {

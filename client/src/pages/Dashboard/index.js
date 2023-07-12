@@ -6,6 +6,7 @@ import UserMenu from '../../components/UserMenu';
 import styles from './Dashboard.module.css';
 import {connect} from 'react-redux';
 import {getUserDataRequest, getChatListRequest} from '../../actions/actionCreators';
+import ChatMenu from '../../components/ChatMenu';
 
 const Dashboard = (props) => {
 
@@ -25,15 +26,17 @@ const Dashboard = (props) => {
 
     return (
         <main className={styles.main}>
-            <div className={styles.aside}>
             <UserMenu />
+            <ChatMenu />
+            {/* <div className={styles.aside}> */}
             <DialogList />
-            </div>
-            <section className={styles.container}>
+            {/* </div> */}
+            <section className={styles.container}> 
                 <Chat />
                 <MessageArea />
-            </section>
+             </section>
         </main>
+     
     );
 }
 

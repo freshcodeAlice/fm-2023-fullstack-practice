@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import styles from './UserMenuModal.module.css';
+import styles from './ModalWindow.module.css';
 
-const UserMenuModal = (props) => {
+const ModalWindow = (props) => {
     const [editMode, setEdit] = useState(false);
 
     const editHandler = () => {
@@ -24,4 +24,4 @@ const UserMenuModal = (props) => {
     );
 }
 
-export default UserMenuModal;
+export default ModalWindow;
