@@ -74,7 +74,11 @@ export const getUserData = async () => await httpClient.get('/users/');
 
 export const deleteUser = async () => await httpClient.delete('/users/');
 
-export const updateUser = async (body) => await httpClient.put('/users/', body);
+export const updateUser = async (body) => await httpClient.put('/users/', body, {
+    headers: {
+        'Content-Type': "multipart/form-data"
+    }
+});
 
 /* Chat API */
 

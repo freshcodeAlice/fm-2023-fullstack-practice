@@ -4,5 +4,5 @@ module.exports = {
     REFRESH_SECRET_VALUE: 'refresh-secret',
     ACCESS_TIME: 60*60,
     REFRESH_TIME: 60*60,
-    IMAGE_STATIC_PATH: '/public/',
+    IMAGE_STATIC_PATH: 'public/',
 }

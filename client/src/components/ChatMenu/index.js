@@ -11,7 +11,7 @@ const ChatMenu = (props) => {
         setOpen(!modalOpen)
     } 
 
-    const imageSrc = props.currentChat.imagePath || CONSTANTS.CHAT_PLACEHOLDER;
+    const imageSrc = props.currentChat?.imagePath || CONSTANTS.CHAT_PLACEHOLDER;
 
     return (
         <>
