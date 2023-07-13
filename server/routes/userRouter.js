@@ -14,4 +14,6 @@ userRouter.delete('/', checkToken, UserController.deleteOne);
 userRouter.put('/', checkToken, upload.single('image'), checkImage, UserController.updateOne);
 //// TODO: tokens
 
+userRouter.post('/refresh', UserController.refreshSession);
+
 module.exports = userRouter;
