@@ -53,7 +53,8 @@ const UserMenuModal = (props) => {
                  <DragNDropArea sendImage={setImage} file={image}>
                                     <img src={imageSrc} 
                                     ref={previewRef}
-                                    className={styles['full-avatar']} />
+                                    className={styles['full-avatar']} 
+                                    draggable="false"/>
                         </DragNDropArea>
                         <div>
                         <input
