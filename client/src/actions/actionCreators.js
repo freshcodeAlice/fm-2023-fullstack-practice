@@ -1,22 +1,46 @@
 import ACTION_TYPES from './actionTypes';
+import {createAction} from '@reduxjs/toolkit';
+
+
+export const loginUserRequest = createAction(ACTION_TYPES.LOGIN_USER_REQUEST);
+
+export const loginUserSuccess = createAction(ACTION_TYPES.LOGIN_USER_SUCCESS);
+
+export const loginUserError = createAction(ACTION_TYPES.LOGIN_USER_ERROR);
+
+
+///loginUserRequest({})
+console.log(loginUserRequest.type);
+
+
+/*
+const actionCreator = () => {
+    return (dispatch, getState) => 
+        api.getData()
+        .then(data => data.json())
+        .then(result => dispatch(result))
+}
+
+*/
+
 
 ////users
 
 
-export const loginUserRequest = (payload) => ({
-    type: ACTION_TYPES.LOGIN_USER_REQUEST,
-    payload
-});
+// export const loginUserRequest = (payload) => ({
+//     type: ACTION_TYPES.LOGIN_USER_REQUEST,
+//     payload
+// });
 
-export const loginUserSuccess = (data) => ({
-    type: ACTION_TYPES.LOGIN_USER_SUCCESS,
-    data
-});
+// export const loginUserSuccess = (data) => ({
+//     type: ACTION_TYPES.LOGIN_USER_SUCCESS,
+//     data
+// });
 
-export const loginUserError = (error) => ({
-    type: ACTION_TYPES.LOGIN_USER_ERROR,
-    error
-})
+// export const loginUserError = (error) => ({
+//     type: ACTION_TYPES.LOGIN_USER_ERROR,
+//     error
+// })
 
 ///
 

@@ -1,6 +1,7 @@
 import {put} from 'redux-saga/effects';
 import * as API from '../api';
-import * as ActionCreators from '../actions/actionCreators';
+ import * as ActionCreators from '../actions/actionCreators';
+import { getChatListSuccess, getUserDataSuccess } from '../reducers/chatListReducer';
 
 export function* addMessageSaga(action) {
     try {
@@ -20,7 +21,7 @@ export function* addMessageSaga(action) {
 export function* getChatList(action) {
     try {
         const {data: {data}} = yield API.getUserChats();
-        yield put(ActionCreators.getChatListSuccess(data))
+        yield put(getChatListSuccess(data))
     } catch(error) {
         yield put(ActionCreators.getChatListError(error));
     }
