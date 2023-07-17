@@ -5,6 +5,7 @@ import userReducer from './userReducer';
 import currentChatReducer from './currentChatReducer';
 import fetchingReducer from './fetchingReducer';
 import chatListReducer from './chatListReducer';
+import notificationReducer from './notificationReducer';
 
 const initialState = {
     user: null,
@@ -12,6 +13,7 @@ const initialState = {
     currentChat: null,
     isFetching: false,
     errors: null,
+    notification: null
 }
 
 const rootReducer = combineReducers({
@@ -19,7 +21,8 @@ const rootReducer = combineReducers({
     chatList: chatListReducer,
     currentChat: currentChatReducer,
     isFetching: fetchingReducer,
-    errors: errorReducer
+    errors: errorReducer,
+    notification: notificationReducer
 });
 
 
